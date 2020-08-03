@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import Particles from 'react-particles-js';
 import './App.css';
 import Navigation from './components/Navigation/Navigation';
@@ -30,7 +30,18 @@ const particleOptions = {
   
 }}
 
-function App() {
+class App extends Component {
+
+  constructor(){
+super ();
+  this.state= {
+    input: '',
+}
+  }
+  onInputChange =(event)=> {
+    console.log(event.target.value);
+  }
+  render(){
   return (
     <div className="App">
     <Particles className="particles"
@@ -38,11 +49,13 @@ function App() {
       <Navigation />
       <Logo />
       <Rank />
-       <ImageLinkForm />
-       {/*
-      <FaceRecognition /> */}
+       <ImageLinkForm onInputChange={this.onInputChange}/>
+      {/* <FaceRecognition /> */}
     </div>
   );
 }
+}
 
 export default App;
+
+// www.ibtm-models.com/wp-content/uploads/2019/12/xanthe.jpg
